@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function computerPlay(){
+            let compChoic=Math.floor(Math.random()*3);//random int < 3
+            switch(compChoic){
+                
+                case 0: return "rock";
+                        break;
+            
+                case 1: return "paper";
+                        break;
+    
+                case 2: return "scissors";
+                        break;
+            }
+        }
+
+        function playRound(userSelection,compSelection){
+            userSelection=userSelection.toLowerCase();
+            switch(userSelection){
+                
+                case "rock": switch(compSelection){
+                    case "rock":console.log("It's a tie!");
+                    return [0,0];
+
+                    case "paper":console.log("You Lose! Paper beats Rock");
+                    return [0,1];
+                    
+                    case "scissors":console.log("You Win! Rock beats Scissors");
+                    return [1,0];
+                    }
+                        
+                case "paper": switch(compSelection){
+                    case "rock":console.log("You Win! Paper beats Rock");
+                    return [1,0];
+
+                    case "paper":console.log("It's a tie!");
+                    return [0,0];
+                    
+                    case "scissors":console.log("You Lose! Scissors beats Paper");
+                    return [0,1];
+                    }
+
+                case "scissors": switch(compSelection){
+                    case "rock":console.log("You Lose! Rock beats Scissors");
+                    return [0,1];
+
+                    case "paper":console.log("You Win! Scissors beats Paper");
+                    return [1,0];
+                    
+                    case "scissors":console.log("It's a tie!");
+                    return [0,0];
+                    }
+            }
+        
+        }
+        function game(){
+            let score=[0,0];
+            for(let i=0;i<5;i++){
+                let userChoice=prompt("Rock, paper or scissors?").toLowerCase();
+                let compChoice=computerPlay();
+                let result=playRound(userChoice,compChoice);
+                score[0]+=result[0];
+                score[1]+=result[1];
+            }
+            if(score[0]>score[1])
+                alert("You Won!")
+            else
+                alert("Tough Luck Pal")
+        }
+    </script>
+</head>
+<body>    
+</body>
+</html>
