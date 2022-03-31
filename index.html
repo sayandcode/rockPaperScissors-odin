@@ -66,14 +66,16 @@
             let score=[0,0];
             for(let i=0;i<5;i++){
                 let userChoice;
-                while(1){
+                let validResponse=false;
+                while(!validResponse){
                     userChoice=prompt("Rock, paper or scissors?","Rock");
                     if((/^ *(rock|paper|scissors) *$/i).test(userChoice))
-                        break;
+                        validResponse=true;
+                    else if (userChoice===null)
+                        return false;
                     else
                         alert("Please type with correct spelling");
                 }
-                
                 userChoice=userChoice.trim().toLowerCase();
                 let compChoice=computerPlay();
                 let result=playRound(userChoice,compChoice);
