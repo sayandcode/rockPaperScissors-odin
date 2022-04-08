@@ -6,12 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./libgif.js"></script>
 </head>
 <body>    
+    <h1>Rock, Paper, Scissors?</h1>
     <div class="options">
         <div id="option1" class="box"><img src="./gifs/stone.gif" alt=""></div>
         <div id="option2" class="box"><img src="./gifs/paper.gif" alt=""></div>
         <div id="option3" class="box"><img src="./gifs/scissors.gif" alt=""></div>
     </div>
+    <div id="roundDetails">You played Rock. Computer played scissors</div>
+    <p id="score">1-1</p>
+    <div id="lives">
+        <div class="dead"></div>
+        <div class="dead"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <audio id="Yes" src="https://cdn.videvo.net/videvo_files/audio/premium/audio0062/watermarked/Child-Male-C_Yes_VKT_09330_preview.mp3" type="audio/mp3"></audio>
+    <audio id="No"src="https://cdn.videvo.net/videvo_files/audio/premium/audio0019/watermarked/Adult-Fem-G_Oh-No_VKT_02937_preview.mp3""></audio>
+    <audio id="Win" src="https://cdn.videvo.net/videvo_files/audio/premium/audio0070/watermarked/CrowdCheering%206048_02_1_preview.mp3"></audio>
+    <audio id="Lose" src="https://cdn.videvo.net/videvo_files/audio/premium/audio0070/watermarked/CrowdBooing%20TL03_08_preview.mp3"></audio>
 </body>
 </html>

@@ -1,3 +1,10 @@
+
+
+
+
+
+//OLD LOGIC
+/*
 if(confirm("Would you like to play Rock, Paper, Scissors?"))
 game();
 
