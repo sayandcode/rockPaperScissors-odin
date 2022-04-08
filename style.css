@@ -58,7 +58,7 @@ div.box{
     transform: scale(1.05);
 }
 
-#roundDetails{
+#roundResult{
     font-size: 1.5rem;
     margin-block: 1.5em;
 }
@@ -86,4 +86,8 @@ div.box{
 
 #lives .dead{
     background-image: url("https://cdn-icons-png.flaticon.com/512/60/60118.png");
+}
+
+footer{
+    margin-top: 5em;
 }
