@@ -91,9 +91,8 @@ function computerPlay(){
 
 function showEndScreen(text){
     const endScreen=document.querySelector('#endScreen');
-    const result = document.createElement('div');
+    const result = endScreen.firstElementChild;
     result.textContent=text;
-    endScreen.insertBefore(result,endScreen.firstElementChild);
     endScreen.style.display='flex';
     endScreen.querySelector('button').addEventListener('click',()=>{
         score=[0,0];
