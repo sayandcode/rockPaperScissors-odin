@@ -4,7 +4,7 @@ const scoreDisplay=document.querySelector('#score');
 const options=document.querySelector('.options').querySelectorAll(':scope > div');
 options.forEach(option => option.addEventListener('click',e=> playRound(e.path[1].id)));
 
-scoreDisplay.addEventListener("Game Over",e=>alert(e.detail.text));
+scoreDisplay.addEventListener("Game Over",e=>showEndScreen(e.detail.text));
 
 function playRound(userChoice){
     let compChoice = computerPlay();
@@ -87,4 +87,18 @@ function computerPlay(){
 
         case 2: return "scissors";
     }
+}
+
+function showEndScreen(text){
+    const endScreen=document.querySelector('#endScreen');
+    const result = document.createElement('div');
+    result.textContent=text;
+    endScreen.insertBefore(result,endScreen.firstElementChild);
+    endScreen.style.display='flex';
+    endScreen.querySelector('button').addEventListener('click',()=>{
+        score=[0,0];
+        scoreDisplay.textContent=`${score[0]}-${score[1]}`;
+        document.querySelectorAll('#lives > div').forEach(life=>life.classList.remove('dead'));
+        endScreen.style.display='none';
+    })
 }

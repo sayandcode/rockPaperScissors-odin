@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,400;0,900;1,100&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Patrick+Hand");
+
 body{
     font-family: 'Grandstander', cursive;
     text-align: center;
@@ -91,3 +93,26 @@ div.box{
 footer{
     margin-top: 5em;
 }
+
+#endScreen{
+    height: 100vh;
+    width: 100vw;
+    background-color: hsla(0, 0%, 100%, 0.774);
+    position: fixed;
+    top:0;
+    left:0;
+    /* display: flex;*/ /* to be activated */
+    flex-direction: column;
+    /* justify-content: center; */
+    gap:1em;
+    align-items: center;
+    display: none;/* make it disappear */
+}
+
+#endScreen div{
+    margin-top: 1em;
+    font-size: 8rem;
+    font-weight: 100;
+    font-style: italic;
+}
+
