@@ -55,10 +55,15 @@ function playRound(userChoice){
     score[1]+=result[1];
     scoreDisplay.textContent=`${score[0]}-${score[1]}`;
     
-    if(result[1])
+    if(result[1]){
         document.querySelector(`#lives :nth-child(${score[1]})`).classList.add('dead');
-    
+        document.querySelector('audio[id="No"]').play();
+    }
+    else if(result[0])
+        document.querySelector('audio[id="Yes"]').play();
+
     if(score[0]==5){
+        document.querySelector('audio[id="Win"]').play();
         const gameOver = new CustomEvent("Game Over", {
             detail:{
                 text:"You Won!"
@@ -67,6 +72,7 @@ function playRound(userChoice){
         scoreDisplay.dispatchEvent(gameOver);
     }
     else if(score[1]==5){
+        document.querySelector('audio[id="Lose"]').play();
         const gameOver = new CustomEvent("Game Over", {
             detail:{
                 text:"You Lost!"
@@ -99,5 +105,9 @@ function showEndScreen(text){
         scoreDisplay.textContent=`${score[0]}-${score[1]}`;
         document.querySelectorAll('#lives > div').forEach(life=>life.classList.remove('dead'));
         endScreen.style.display='none';
+        document.querySelectorAll('audio').forEach(sound=>{
+            sound.pause();
+            sound.currentTime = 0;
+        })
     })
 }
