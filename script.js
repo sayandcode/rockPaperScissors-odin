@@ -4,6 +4,8 @@ const scoreDisplay=document.querySelector('#score');
 const options=document.querySelector('.options').querySelectorAll(':scope > div');
 options.forEach(option => option.addEventListener('click',e=> playRound(e.path[1].id)));
 
+scoreDisplay.addEventListener("Game Over",e=>alert(e.detail.text));
+
 function playRound(userChoice){
     let compChoice = computerPlay();
     let result;
@@ -51,7 +53,28 @@ function playRound(userChoice){
     }
     score[0]+=result[0];
     score[1]+=result[1];
-    scoreDisplay.textContent=`${score[0]}-${score[1]}`
+    scoreDisplay.textContent=`${score[0]}-${score[1]}`;
+    
+    if(result[1])
+        document.querySelector(`#lives :nth-child(${score[1]})`).classList.add('dead');
+    
+    if(score[0]==5){
+        const gameOver = new CustomEvent("Game Over", {
+            detail:{
+                text:"You Won!"
+            }
+        });
+        scoreDisplay.dispatchEvent(gameOver);
+    }
+    else if(score[1]==5){
+        const gameOver = new CustomEvent("Game Over", {
+            detail:{
+                text:"You Lost!"
+            }
+        });
+        scoreDisplay.dispatchEvent(gameOver);
+    }
+
 }
 
 function computerPlay(){
@@ -65,30 +88,3 @@ function computerPlay(){
         case 2: return "scissors";
     }
 }
-/*
-
-function game(){
-let score=[0,0];
-for(let i=0;i<5;i++){
-    let userChoice;
-    let validResponse=false;
-    while(!validResponse){
-        userChoice=prompt("Rock, paper or scissors?","Rock");
-        if((/^ *(rock|paper|scissors) *$/i).test(userChoice))
-            validResponse=true;
-        else if (userChoice===null)
-            return;
-        else
-            alert("Please type with correct spelling");
-    }
-    userChoice=userChoice.trim().toLowerCase();
-    let compChoice=computerPlay();
-    let result=playRound(userChoice,compChoice);
-    score[0]+=result[0];
-    score[1]+=result[1];
-}
-if(score[0]>score[1])
-    alert("You Won!")
-else
-    alert("Tough Luck Pal")
-}*/
