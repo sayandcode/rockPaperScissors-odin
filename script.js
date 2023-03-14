@@ -2,7 +2,7 @@ let score=[0,0];
 const scoreDisplay=document.querySelector('#score');
 
 const options=document.querySelector('.options').querySelectorAll(':scope > div');
-options.forEach(option => option.addEventListener('click',e=> playRound(e.path[1].id)));
+options.forEach(option => option.addEventListener('click',()=> playRound(option.id)));
 
 scoreDisplay.addEventListener("Game Over",e=>showEndScreen(e.detail.text));
 
